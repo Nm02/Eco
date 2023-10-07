@@ -16,6 +16,7 @@ def listen()->list:
             msg=msg.lower()
             # print(msg)
             # msg="quiero que eco reproduzca algo"
+            print(msg)
             if name in msg:
                 msg=msg.split()
                 poss=msg.index(name)
@@ -30,7 +31,7 @@ def listen()->list:
     return msg
 
 #Funcion principal del bot
-def run_Aura():
+def run_bot():
     comando=listen()
     if len(comando)>0:
         if comando[0]=='reproduce':
@@ -39,10 +40,11 @@ def run_Aura():
             print('reproduciendo',music)
             talk('reproduciendo '+ music)
             pywhatkit.playonyt(music)
+        
         else:
             talk('Disculpe, no lo entendi')
 
-name = 'eco' #Nombre de la ia
+name = 'pepe' #Nombre de la ia
 
 mic=sr.Microphone() #Creo una variable para guardar mi microfono
 listener=sr.Recognizer() #Creo variable para el recognizer (Reconocimiento de voz)
@@ -52,4 +54,4 @@ voices=engine.getProperty('voices') #Obtiene las voces disponibles
 engine.setProperty('voices',voices[0].id) #Setea la voz segun el indice: 0=Sabina (español de mexico), 1=Helena (español de españa) y 2 Zira (Ingles)
 
 if __name__=="__main__":
-    run_Aura()
+    run_bot()
